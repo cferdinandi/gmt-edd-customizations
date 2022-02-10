@@ -25,9 +25,9 @@
 
 		// Get an array of purchase IDs
 		$purchase_ids = array();
-		if (is_array($purchases)) {
+		if ( is_array($purchases) ) {
 			foreach ( $purchases as $download ) {
-				$purchase_ids = $download['id'];
+				$purchase_ids[] = $download['id'];
 			}
 		}
 
@@ -61,18 +61,22 @@
 	 */
 	function gmt_edd_custom_add_bonus_gift_to_purchase ( $payment_id ) {
 
-		// Get the payment
-		$payment = new EDD_Payment( $payment_id );
-
 		// Check if bonus gift eligible
-		if (!gmt_edd_custom_is_bonus_eligible($payment->downloads)) return;
+		$purchase = edd_get_payment_meta( $payment_id );
+		if (empty(gmt_edd_custom_is_bonus_eligible($purchase['downloads']))) return;
 
 		// Add the bonus content
 		$bonus_gift_id = edd_get_option('gmt_edd_custom_bonus_gift');
+		$payment = new EDD_Payment();
 		$payment->add_download( $bonus_gift_id, array(
-		    'item_price' => 0.00,
+			'item_price' => 0.00,
 		));
+		$payment->email = $purchase['user_info']['email'];
+		$payment->save();
+
+		// Flip from pending to complete
+		$payment->status = 'complete';
 		$payment->save();
 
 	}
-	add_action( 'edd_complete_purchase', 'gmt_edd_custom_add_bonus_gift_to_purchase', 10, 2 );
+	add_action( 'edd_after_payment_actions', 'gmt_edd_custom_add_bonus_gift_to_purchase', 10, 2 );

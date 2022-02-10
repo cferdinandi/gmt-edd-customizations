@@ -41,6 +41,13 @@
 
 		$custom_settings = array(
 
+			// TEST
+			// array(
+			// 	'id' => 'gmt_edd_custom_test',
+			// 	'desc' => print_r( $payment, true),
+			// 	'type' => 'descriptive_text',
+			// ),
+
 			// Heading
 			array(
 				'id'    => 'gmt_edd_custom_settings_cart',
@@ -103,7 +110,6 @@
 			),
 
 			// Start Date
-			// @todo pass value into strtotime() later to calculate eligibility
 			array(
 				'id'      => 'gmt_edd_custom_bonus_start',
 				'name'    => __( 'Start', 'gmt_edd' ),
