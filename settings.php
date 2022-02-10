@@ -20,12 +20,12 @@
 		$custom_settings = array(
 
 			// Heading
-			array(
-				'id'    => 'gmt_edd_custom_settings',
-				'name'  => '<strong>' . __( 'Checkout Settings', 'gmt_edd' ) . '</strong>',
-				'desc'  => __( 'Settings for the checkout page', 'gmt_edd' ),
-				'type'  => 'header',
-			),
+			// array(
+			// 	'id'    => 'gmt_edd_custom_settings',
+			// 	'name'  => '<strong>' . __( 'Checkout Settings', 'gmt_edd' ) . '</strong>',
+			// 	'desc'  => __( 'Settings for the checkout page', 'gmt_edd' ),
+			// 	'type'  => 'header',
+			// ),
 
 			// Credit Card Label
 			array(
@@ -34,6 +34,15 @@
 				'desc'    => __( 'Label for the credit card field', 'gmt_edd' ),
 				'type'    => 'text',
 				'std'     => __( 'Credit Card (via Stripe)', 'gmt_edd' ),
+			),
+
+			// Product Link Text
+			array(
+				'id'      => 'gmt_edd_custom_product_link_text',
+				'name'    => __( 'Product Link Text', 'gmt_edd' ),
+				'desc'    => __( 'Text for the product links', 'gmt_edd' ),
+				'type'    => 'text',
+				'std'     => __( 'view item', 'gmt_edd' ),
 			),
 
 			// GDPR Message
