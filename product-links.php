@@ -26,7 +26,7 @@
 	 * Create the product page link metabox
 	 */
 	function gmt_edd_custom_create_product_page_link_metabox() {
-		add_meta_box( 'gmt_edd_product_page_link_metabox', __( 'Download Page Link', 'gmt_edd' ), 'gmt_edd_render_product_page_link_metabox', 'download', 'side', 'default');
+		add_meta_box( 'gmt_edd_product_page_link_metabox', __( 'Download Page Link', 'gmt_edd' ), 'gmt_edd_custom_render_product_page_link_metabox', 'download', 'side', 'default');
 	}
 	add_action( 'add_meta_boxes', 'gmt_edd_custom_create_product_page_link_metabox' );
 
