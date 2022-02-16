@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/cferdinandi/gmt-edd-customizations/
  * GitHub Plugin URI: https://github.com/cferdinandi/gmt-edd-customizations/
  * Description: Customizations to Easy Digital Downloads for Go Make Things.
- * Version: 1.3.2
+ * Version: 1.4.1
  * Author: Chris Ferdinandi
  * Author URI: http://gomakethings.com
  * License: GPLv3
