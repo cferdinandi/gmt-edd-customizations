@@ -18,7 +18,7 @@
 					if ($variable_prices && isset( $item['item_number']['options']['price_id'] )) {
 						$option = ' - ' . edd_get_price_option_name( $item['id'], $item['item_number']['options']['price_id'], 32 );
 					}
-					$files[] = $item['name'] . $option;
+					$files[] = gmt_edd_custom_update_cart_item_name($item['name']) . $option;
 				}
 			}
 		}
