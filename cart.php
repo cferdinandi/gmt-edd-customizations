@@ -33,7 +33,7 @@
 		}
 		return $gateways;
 	}
-	add_filter( 'edd_payment_gateways', 'gmt_edd_custom_add_via_stripe' );
+	add_filter( 'edd_payment_gateways', 'gmt_edd_custom_add_via_stripe', 20 );
 
 
 
