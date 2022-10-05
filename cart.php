@@ -9,7 +9,7 @@
 	 * Remove unneeded dash (-) from cart items with no bundle names
 	 */
 	function gmt_edd_custom_update_cart_item_name ( $item_name ) {
-		if (substr($item_name, -4) === ' - _') {
+		if (substr($item_name, -2) === ' _') {
 			return substr($item_name, 0, -4);
 		}
 		return $item_name;

@@ -13,12 +13,13 @@
 		if ( $cart ) {
 			foreach ( $cart as $key => $item ) {
 				if ( empty( $item['in_bundle'] ) ) {
-					$variable_prices = edd_has_variable_prices( $item['id'] );
-					$option = '';
-					if ($variable_prices && isset( $item['item_number']['options']['price_id'] )) {
-						$option = ' - ' . edd_get_price_option_name( $item['id'], $item['item_number']['options']['price_id'], 32 );
-					}
-					$files[] = gmt_edd_custom_update_cart_item_name($item['name'] . $option);
+					// @deprecated v1.4.5
+					// $variable_prices = edd_has_variable_prices( $item['id'] );
+					// $option = '';
+					// if ($variable_prices && isset( $item['item_number']['options']['price_id'] )) {
+					// 	$option = ' - ' . edd_get_price_option_name( $item['id'], $item['item_number']['options']['price_id'], 32 );
+					// }
+					$files[] = gmt_edd_custom_update_cart_item_name($item['name']);
 				}
 			}
 		}
