@@ -10,7 +10,7 @@
 	 */
 	function gmt_edd_custom_update_cart_item_name ( $item_name ) {
 		if (substr($item_name, -2) === ' _') {
-			return substr($item_name, 0, -4);
+			return substr($item_name, 0, -6);
 		}
 		return $item_name;
 
