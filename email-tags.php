@@ -35,8 +35,7 @@
 	 * @param  integer $payment_id The payment ID
 	 */
 	function gmt_edd_custom_get_pricing_parity ( $payment_id = 0 ) {
-		$payment = edd_get_payment($payment_id);
-		$payment_meta = $payment->get_meta();
+		$payment_meta = edd_get_payment_meta($payment_id);
 		$discount = $payment_meta['pricing_parity'];
 		if (empty($discount)) return '';
 		return $discount['country'] . ' - ' . $discount['amount'] . '%';
