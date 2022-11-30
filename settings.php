@@ -65,6 +65,15 @@
 				'std'     => __( 'Credit Card (via Stripe)', 'gmt_edd' ),
 			),
 
+			// Email Address Description
+			array(
+				'id'      => 'gmt_edd_custom_email_description',
+				'name'    => __( 'Email Address Description', 'gmt_edd' ),
+				'desc'    => __( 'A description for the email address field', 'gmt_edd' ),
+				'type'    => 'text',
+				'std'     => __( '', 'gmt_edd' ),
+			),
+
 			// Product Link Text
 			array(
 				'id'      => 'gmt_edd_custom_product_link_text',

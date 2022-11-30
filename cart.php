@@ -69,12 +69,16 @@
 		if( is_user_logged_in() ) :
 			$user_data = get_userdata( get_current_user_id() );
 		endif;
+		$desc = edd_get_option('gmt_edd_custom_email_description');
 		?>
 		<fieldset id="edd_checkout_user_info">
 			<?php do_action( 'edd_purchase_form_before_email' ); ?>
 			<p id="edd-email-wrap">
-				<label class="edd-label" for="edd-email"><strong><?php _e('Email Address', 'edd'); ?></strong></label>
-				<input class="edd-input required" type="email" name="edd_email" placeholder="<?php _e('Email address', 'edd'); ?>" id="edd-email" value="<?php echo is_user_logged_in() ? $user_data->user_email : ''; ?>"/>
+				<label class="edd-label<?php empty($desc) ? '' : ' no-margin-bottom' ?>" for="edd-email"><strong><?php _e('Email Address', 'edd'); ?></strong></label>
+				<?php if (!empty($desc)) : ?>
+				<div class="margin-bottom-small"><em id="edd-email-desc" class="text-small text-muted"><?php echo esc_html($desc); ?></em></div>
+				<?php endif; ?>
+				<input class="edd-input required" type="email" name="edd_email" placeholder="<?php _e('Email address', 'edd'); ?>" id="edd-email" <?php if (!empty($desc)) : ?>aria-describedby="edd-email-desc"<?php endif; ?> value="<?php echo is_user_logged_in() ? $user_data->user_email : ''; ?>"/>
 			</p>
 			<?php do_action( 'edd_purchase_form_after_email' ); ?>
 			<?php do_action( 'edd_purchase_form_user_info' ); ?>
