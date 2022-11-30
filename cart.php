@@ -74,7 +74,7 @@
 		<fieldset id="edd_checkout_user_info">
 			<?php do_action( 'edd_purchase_form_before_email' ); ?>
 			<p id="edd-email-wrap">
-				<label class="edd-label<?php empty($desc) ? '' : ' no-margin-bottom' ?>" for="edd-email"><strong><?php _e('Email Address', 'edd'); ?></strong></label>
+				<label class="edd-label<?php if (!empty($desc)) : ?> no-margin-bottom<?php endif; ?>" for="edd-email"><strong><?php _e('Email Address', 'edd'); ?></strong></label>
 				<?php if (!empty($desc)) : ?>
 				<div class="margin-bottom-small"><em id="edd-email-desc" class="text-small text-muted"><?php echo esc_html($desc); ?></em></div>
 				<?php endif; ?>
