@@ -13,7 +13,7 @@
 		if (substr(html_entity_decode($item), -2) === ' _') {
 			return substr($item, 0, -4);
 		}
-		return utf8_encode($item);
+		return $item;
 
 	}
 	add_filter( 'edd_get_cart_item_name', 'gmt_edd_custom_update_cart_item_name' );
