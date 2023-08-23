@@ -18,7 +18,7 @@
 
 		echo ' <span class="gmt-edd-link-to-product-in-cart">(<a href="' . esc_url_raw( $link ) . '">' . $text . '</a>)</span>';
 	}
-	add_action( 'edd_checkout_cart_item_title_after', 'gmt_edd_custom_add_links_to_cart_items' );
+	// add_action( 'edd_checkout_cart_item_title_after', 'gmt_edd_custom_add_links_to_cart_items' );
 
 
 

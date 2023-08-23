@@ -83,6 +83,15 @@
 				'std'     => __( 'view item', 'gmt_edd' ),
 			),
 
+			// Student Portal
+			array(
+				'id'      => 'gmt_edd_custom_student_portal_url',
+				'name'    => __( 'Student Portal URL', 'gmt_edd' ),
+				'desc'    => __( 'The URL for the student portal (redirect after checkout)', 'gmt_edd' ),
+				'type'    => 'text',
+				'std'     => __( '', 'gmt_edd' ),
+			),
+
 			// GDPR Message
 			array(
 				'id'      => 'gmt_edd_custom_gdpr_message',

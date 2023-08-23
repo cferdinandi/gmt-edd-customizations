@@ -14,6 +14,12 @@
 	add_filter( 'edd_get_cart_item_name', 'gmt_edd_custom_update_cart_item_name' );
 
 
+	/**
+	 * Only allow one item in cart at a time
+	 */
+	add_filter( 'edd_pre_add_to_cart_contents', '__return_false' );
+
+
 
 	//
 	// Stripe Label
@@ -141,4 +147,64 @@
 			'</li>';
 		return $items;
 	}
-	add_filter( 'wp_nav_menu_items', 'gmt_edd_custom_add_cart_link_to_nav', 10, 2);
+	// add_filter( 'wp_nav_menu_items', 'gmt_edd_custom_add_cart_link_to_nav', 10, 2);
+
+	/**
+	 * Add back button to navigation menu
+	 */
+	function gmt_edd_custom_add_back_to_course_link_to_nav ( $items, $args ) {
+		if ( $args->theme_location !== 'primary' ) return $items;
+		if ( !function_exists( 'edd_get_cart_contents' ) ) return $items;
+		$cart_contents = edd_get_cart_contents();
+		$url = 'https://gomakethings.com/resources/';
+		if (!empty($cart_contents)) {
+			foreach ( $cart_contents as $item ) {
+				$link = get_post_meta( $item['id'], 'gmt_edd_product_page_link', true );
+				if (!empty($link)) {
+					$url = $link;
+				}
+			}
+		}
+		$items .=
+			'<li id="primary-nav-edd-back">' .
+				'<a href="' . $url . '">' .
+					'&larr; Back' .
+				'</a>' .
+			'</li>';
+		return $items;
+	}
+	add_filter( 'wp_nav_menu_items', 'gmt_edd_custom_add_back_to_course_link_to_nav', 10, 2);
+
+
+
+	//
+	// Checkout Success
+	//
+
+	/**
+	 * Redirect the success page to a custom URL.
+	 * We use this instead of the success page redirect filter because of Stripe, which does not use that filter.
+	 */
+	function gmt_edd_custom_redirect_success_page() {
+
+		// If there's no success page, bail
+		if ( ! edd_is_success_page() ) return;
+
+		// Get the purchase session
+		$purchase_session = edd_get_purchase_session();
+		if ( empty( $purchase_session ) || empty( $purchase_session['user_info']['email'] ) ) return;
+
+		// Get the student portal URL
+		$url = edd_get_option('gmt_edd_custom_student_portal_url');
+		if (empty($url)) return;
+
+		// Get the user email
+		$email = $purchase_session['user_info']['email'];
+		if (empty($email)) return;
+
+		// Redirect to student portal
+		header('Location: ' . $url . '?email=' . urlencode($url));
+		exit();
+
+	}
+	add_action( 'template_redirect', 'gmt_edd_custom_redirect_success_page' );
