@@ -147,23 +147,16 @@
 			'</li>';
 		return $items;
 	}
-	// add_filter( 'wp_nav_menu_items', 'gmt_edd_custom_add_cart_link_to_nav', 10, 2);
+	add_filter( 'wp_nav_menu_items', 'gmt_edd_custom_add_cart_link_to_nav', 10, 2);
 
 	/**
 	 * Add back button to navigation menu
 	 */
 	function gmt_edd_custom_add_back_to_course_link_to_nav ( $items, $args ) {
 		if ( $args->theme_location !== 'primary' ) return $items;
-		if ( !function_exists( 'edd_get_cart_contents' ) ) return $items;
-		$cart_contents = edd_get_cart_contents();
 		$url = 'https://gomakethings.com/resources/';
-		if (!empty($cart_contents)) {
-			foreach ( $cart_contents as $item ) {
-				$link = get_post_meta( $item['id'], 'gmt_edd_product_page_link', true );
-				if (!empty($link)) {
-					$url = $link;
-				}
-			}
+		if (!empty($_GET['ref'])) {
+			$url = $_GET['ref'];
 		}
 		$items .=
 			'<li id="primary-nav-edd-back">' .
