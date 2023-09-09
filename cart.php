@@ -17,7 +17,7 @@
 	/**
 	 * Only allow one item in cart at a time
 	 */
-	add_filter( 'edd_pre_add_to_cart_contents', '__return_false' );
+	// add_filter( 'edd_pre_add_to_cart_contents', '__return_false' );
 
 
 
