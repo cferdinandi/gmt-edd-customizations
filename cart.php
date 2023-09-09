@@ -147,7 +147,7 @@
 			'</li>';
 		return $items;
 	}
-	add_filter( 'wp_nav_menu_items', 'gmt_edd_custom_add_cart_link_to_nav', 10, 2);
+	add_filter( 'wp_nav_menu_items', 'gmt_edd_custom_add_cart_link_to_nav', 20, 2);
 
 	/**
 	 * Add back button to navigation menu
