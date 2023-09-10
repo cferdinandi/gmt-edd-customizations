@@ -153,18 +153,35 @@
 	 * Add back button to navigation menu
 	 */
 	function gmt_edd_custom_add_back_to_course_link_to_nav ( $items, $args ) {
+
+		// If not primary nav, bail
 		if ( $args->theme_location !== 'primary' ) return $items;
+
+		// Set the default URL
 		$url = 'https://gomakethings.com/resources/';
+
+		// If there's a cookie, use it
+		if (isset($_COOKIE['gmt_ref']) && !empty($_COOKIE['gmt_ref'])) {
+			$url = $_COOKIE['gmt_ref'];
+		}
+
+		// If there's a query parameter, set and use it
 		if (!empty($_GET['ref'])) {
+			$expires = time() + (60 * 60 * 24);
+			setcookie('gmt_ref', $_GET['ref'], $expires, '/', '', true, true);
 			$url = $_GET['ref'];
 		}
+
+		// Add the nav item
 		$items .=
 			'<li id="primary-nav-edd-back">' .
 				'<a href="' . $url . '">' .
 					'&larr; Back' .
 				'</a>' .
 			'</li>';
+
 		return $items;
+
 	}
 	add_filter( 'wp_nav_menu_items', 'gmt_edd_custom_add_back_to_course_link_to_nav', 10, 2);
 
