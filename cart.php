@@ -213,7 +213,7 @@
 		if (empty($email)) return;
 
 		// Redirect to student portal
-		header('Location: ' . $url . '?email=' . urlencode($url));
+		header('Location: ' . $url . '?email=' . urlencode($email));
 		exit();
 
 	}
