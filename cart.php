@@ -158,7 +158,7 @@
 		if ( $args->theme_location !== 'primary' ) return $items;
 
 		// Set the default URL
-		$url = 'https://gomakethings.com/resources/';
+		$url = 'https://gomakethings.com/';
 
 		// If there's a cookie, use it
 		if (isset($_COOKIE['gmt_ref']) && !empty($_COOKIE['gmt_ref'])) {
